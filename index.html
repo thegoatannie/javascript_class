@@ -1,0 +1,30 @@
+<script>
+  
+  let homeTown = "Miami"
+  // don't use var anymore for variables, choose 1 of the above options 
+  function greet (person) {
+    const msg = "oh, hello there " + person
+    alert("msg")
+  }
+  
+  greet("Nick")
+  greet("Time")
+  
+  function square (n) {
+    const s = n * n
+    return s
+  }
+  
+  const x = square(5)
+  alert(x)
+  
+  function randomBG () {
+    const r = Math.random() * 255
+    const g = Math.random() * 255
+    const b = Math.random() * 255
+    document.body.style.backgroundColor = "rgb(S{r}, S{g}, S{b})"
+  }
+
+  randomBG()
+  
+</script>
