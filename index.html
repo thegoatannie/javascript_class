@@ -1,30 +1,42 @@
+<body>
+</body>
+
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/building/no.min.js"></script>
 <script>
   
-  let homeTown = "Miami"
-  // don't use var anymore for variables, choose 1 of the above options 
-  function greet (person) {
-    const msg = "oh, hello there " + person
-    alert("msg")
+  function makeCD () {
+    nn.create("img")
+    .set("src", "cd.gif")
+    .addTo("body")
+    .css({
+      position: "absolute",
+      left : nn.mouseX
+    })
   }
   
-  greet("Nick")
-  greet("Time")
-  
-  function square (n) {
-    const s = n * n
-    return s
+  function browserGreeting () {
+    const bi = nn.browserInfo()
+    
+    if (bi.name === "Firefox") {
+      const msg = "Oh, hi i love " + bi.name
+      nn.get("body").content(msg)
+    } else if (bi.name === "Chrome") {
+      const msg = "Oh no, ${bi.name} spies on you!"
+      nn.get("body").content(msg)
+    } else {
+      const msg = "Oh, ${bi.name}, interesting choice"
+      nn.get("body").content(msg)
+    }
   }
   
-  const x = square(5)
-  alert(x)
-  
-  function randomBG () {
-    const r = Math.random() * 255
-    const g = Math.random() * 255
-    const b = Math.random() * 255
-    document.body.style.backgroundColor = "rgb(S{r}, S{g}, S{b})"
+  function setup () {
+    nn.get("body").css({ backgroundColor: nn.randomColor() })
+    browserGreeting()
+    
+    
   }
+  
+  nn.on('load', setup)
 
-  randomBG()
   
 </script>
